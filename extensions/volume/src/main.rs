@@ -3,6 +3,38 @@ use serde::{Serialize};
 mod api;
 use api::*;
 
+/*use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
+use wasm_bindgen_futures::JsFuture;
+use web_sys::{Request, RequestInit, RequestMode, Response};*/
+
+/*async fn run() -> Result<JsValue, JsValue> {
+    let mut opts = RequestInit::new();
+    opts.method("GET");
+    opts.mode(RequestMode::Cors);
+
+    let url = format!("https://shopify-payments-app-sample.onrender.com/");
+
+    let request = Request::new_with_str_and_init(&url, &opts)?;
+
+    //request
+    //    .headers()
+    //    .set("Accept", "application/vnd.github.v3+json")?;
+
+    let window = web_sys::window().unwrap();
+    let resp_value = JsFuture::from(window.fetch_with_request(&request)).await?;
+
+    // `resp_value` is a `Response` object.
+    assert!(resp_value.is_instance_of::<Response>());
+    let resp: Response = resp_value.dyn_into().unwrap();
+
+    // Convert this other `Promise` into a rust `Future`.
+    let json = JsFuture::from(resp.json()?).await?;
+
+    // Send the JSON response back to JS.
+    Ok(json)
+}*/
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let input: input::Input = serde_json::from_reader(std::io::BufReader::new(std::io::stdin()))?;
     let mut out = std::io::stdout();
@@ -43,7 +75,8 @@ fn function(input: input::Input) -> Result<FunctionResult, Box<dyn std::error::E
         discounts: vec![Discount {
             message: None,
             targets,
-            value: Value::Percentage(Percentage { value: config.percentage }),
+            //value: Value::Percentage(Percentage { value: config.percentage }),
+            value: Value::Percentage(Percentage { value: 90.0 }),
         }],
         discount_application_strategy: DiscountApplicationStrategy::First,
     })
