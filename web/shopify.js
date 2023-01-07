@@ -35,6 +35,28 @@ const shopify = shopifyApp({
   },
   // This should be replaced with your preferred storage strategy
   sessionStorage: new SQLiteSessionStorage(DB_PATH),
+
+  /*
+  import {shopifyApp} from '@shopify/shopify-app-express';
+  import {MySQLSessionStorage} from '@shopify/shopify-app-express/session-storage/mysql';
+
+  const shopify = shopifyApp({
+    sessionStorage: new MySQLSessionStorage("mysql://username:password@host/database"),
+    ...
+  });
+
+  // OR
+
+  const shopify = shopifyApp({
+    sessionStorage: MySQLSessionStorage.withCredentials({
+      "host.com",
+      "thedatabase",
+      "username",
+      "password",
+    }),
+    ...
+  });
+  */
 });
 
 export default shopify;
