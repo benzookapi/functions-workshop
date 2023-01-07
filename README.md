@@ -140,6 +140,31 @@ When you're ready to set up your app in production, you can follow [our deployme
 
 When you reach the step for [setting up environment variables](https://shopify.dev/apps/deployment/web#set-env-vars), you also need to set the variable `NODE_ENV=production`.
 
+## Added by me 2023.01.06
+
+If you want to host other services like [Render](https://dashboard.render.com/) or bare servers by yourself, try the following. 
+
+1. Based on [this document](https://shopify.dev/apps/deployment/web#step-3-set-environment-variables), add the followoing eviromintal variables.
+ - HOST
+ - PORT
+ - SCOPES
+ - SHOPIFY_API_KEY
+ - SHOPIFY_API_SECRET
+
+2. For deploying to your server, you need to run or specify the following commands.
+   ```shell
+   cd ./web && npm install && cd ./frontend && npm install && npm run build
+   ```
+
+3. For running in your server, you need to run or specify the following commands.
+   ```shell
+   cd ./web && npm run serve
+   ```
+   *You can check these in [the docker file](https://github.com/benzookapi/functions-workshop/blob/main/Dockerfile) of the sample code.
+
+4. In this sample, note that change the Shopify Functions id hardcoded in [the JSX](https://github.com/benzookapi/functions-workshop/blob/main/web/frontend/pages/Volume/new.jsx#L34) which can be retrieved in your created app extension configuration in your partner dashboard.
+
+
 ## Known issues
 
 ### Hot module replacement and Firefox

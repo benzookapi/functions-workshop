@@ -75,8 +75,8 @@ fn function(input: input::Input) -> Result<FunctionResult, Box<dyn std::error::E
         discounts: vec![Discount {
             message: None,
             targets,
-            //value: Value::Percentage(Percentage { value: config.percentage }),
-            value: Value::Percentage(Percentage { value: 90.0 }),
+            value: Value::Percentage(Percentage { value: config.percentage }),
+            //value: Value::Percentage(Percentage { value: 90.0 }),
         }],
         discount_application_strategy: DiscountApplicationStrategy::First,
     })
